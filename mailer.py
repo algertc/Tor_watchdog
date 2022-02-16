@@ -18,7 +18,7 @@ def sendMail(recievingAddr, up, down):
       address,
         (genMsg(address, up, down)))
     server.quit()
-
+#test
 #sendMail("admin@charliealgert.com")
 
 #msg = ("From: %s\r\nTo: %s\r\n\r\n"
