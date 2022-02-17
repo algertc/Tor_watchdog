@@ -16,7 +16,7 @@ with Controller.from_port(port = 9051) as controller:
 
   print("My Tor relay has read %s bytes and written %s." % (bytes_read, bytes_written))
 
-mailer.sendMail(str(config['OUTPUT']['receivingAddr']))
+  mailer.sendMail(str(config['OUTPUT']['receivingAddr']))
 
 while True:
   if str(datetime.now().strftime("%H:%M")) == "00:00":
