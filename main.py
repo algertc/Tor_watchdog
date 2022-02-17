@@ -9,7 +9,7 @@ config.read("config.ini")
 
 
 with Controller.from_port(port = 9051) as controller:
-  global config
+
   controller.authenticate(getAuth.hash())  #access tor hash password from config.ini
 
   bytes_read = controller.get_info("traffic/read")
@@ -17,11 +17,11 @@ with Controller.from_port(port = 9051) as controller:
 
   print("My Tor relay has read %s bytes and written %s." % (bytes_read, bytes_written))
 
-  mailer.sendMail(str(config['OUTPUT']['receivingAddr']), bytes_read, bytes_written)
+  mailer.sendMail(config['OUTPUT']['receivingAddr'], bytes_read, bytes_written)
 
 while True:
   if str(datetime.now().strftime("%H:%M")) == "00:00":
-    mailer.sendMail(str(config['OUTPUT']['receivingAddr']), bytes_read, bytes_written)
+    mailer.sendMail(config['OUTPUT']['receivingAddr'], bytes_read, bytes_written)
     time.sleep(62)
 
 
