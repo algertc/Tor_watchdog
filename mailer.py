@@ -12,7 +12,7 @@ def sendMail(recievingAddr, up, down):
     print(str(up))
     address = recievingAddr
     server = smtplib.SMTP_SSL('smtp.hostinger.com', 465)
-    server.login(str(config)['AUTH']['smtpUser'], str(config['AUTH']['smtpPass']))
+    server.login(str(config['AUTH']['smtpUser']), str(config['AUTH']['smtpPass']))
     server.sendmail(
       "admin@charliealgert.com",
       address,
