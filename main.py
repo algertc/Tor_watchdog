@@ -9,6 +9,7 @@ config.read("config.ini")
 
 
 with Controller.from_port(port = 9051) as controller:
+  global config
   controller.authenticate(getAuth.hash())  #access tor hash password from config.ini
 
   bytes_read = controller.get_info("traffic/read")
