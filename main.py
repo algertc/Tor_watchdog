@@ -14,8 +14,8 @@ with Controller.from_port(port = 9051) as controller:
 
   #todo convert bytes string to a readable GB format
   #todo make email format pretty
-  bytes_read = controller.get_info("traffic/read")
-  bytes_written = controller.get_info("traffic/written")
+  bytes_read = str((float(controller.get_info("traffic/read"))/1000000000)) + "GB"
+  bytes_written = str(float(controller.get_info("traffic/written")/1000000000)) + "GB"
 
   print("My Tor relay has read %s bytes and written %s." % (bytes_read, bytes_written))
 
