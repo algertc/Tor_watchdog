@@ -12,6 +12,8 @@ with Controller.from_port(port = 9051) as controller:
 
   controller.authenticate(getAuth.hash())  #access tor hash password from config.ini
 
+  #todo convert bytes string to a readable GB format
+  #todo make email format pretty
   bytes_read = controller.get_info("traffic/read")
   bytes_written = controller.get_info("traffic/written")
 
