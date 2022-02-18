@@ -1,29 +1,17 @@
-from stem.control import Controller
 from datetime import datetime
-import getAuth
+import Traffic
 import configparser
 import mailer
 import time
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-
-with Controller.from_port(port = 9051) as controller:
-
-  controller.authenticate(getAuth.hash())  #access tor hash password from config.ini
-
-  #todo convert bytes string to a readable GB format
-  #todo make email format pretty
-  bytes_read = str((float(controller.get_info("traffic/read"))/1000000000)) + "GB"
-  bytes_written = str(float(controller.get_info("traffic/written")/1000000000)) + "GB"
-
-  print("My Tor relay has read %s bytes and written %s." % (bytes_read, bytes_written))
-
-  mailer.sendMail(config['OUTPUT']['receivingAddr'], bytes_read, bytes_written)
+#test to ensure fucntionality on start
+mailer.sendMail(config['OUTPUT']['receivingAddr'], Traffic.get('down'), Traffic.get('up'))
 
 while True:
   if str(datetime.now().strftime("%H:%M")) == "00:00":
-    mailer.sendMail(config['OUTPUT']['receivingAddr'], bytes_read, bytes_written)
+    mailer.sendMail(config['OUTPUT']['receivingAddr'], Traffic.get('down'), Traffic.get('up'))
     time.sleep(62)
 
 
