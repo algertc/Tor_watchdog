@@ -1,3 +1,4 @@
+#functions to access user specific config data
 import configparser
 config = configparser.ConfigParser()
 config.read("config.ini")
