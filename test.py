@@ -1,10 +1,6 @@
-import getAuth
-from datetime import *
-print(getAuth.hash())
-#print(datetime.strptime(#pass datetime now in to strip to hour))
+import Traffic
 
-now = datetime.now()
-current_hour = now.strftime("%H:%M")
-print("Current hour =", current_hour)
-time = datetime.now().strftime("%H:%M")
-print(now)
+tester = Traffic.Traffic()
+print(tester.get('up'))
+
+
