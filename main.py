@@ -3,9 +3,10 @@ import Traffic
 import configparser
 import mailer
 import time
-#Open and read config data
+#create config object
 #todo make a config class/file with the getAuth.py stuff and use that instead of accessing from main
 config = configparser.ConfigParser()
+#declaring the file from which config should retrieve its data
 config.read("config.ini")
 
 #test to ensure fucntionality on start

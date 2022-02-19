@@ -1,16 +1,22 @@
 from stem.control import Controller
 import getAuth
+from datetime import datetime
 
-#get traffic through the inbuilt api via the "control port" 9051
-def get(updown):
-  with Controller.from_port(port = 9051) as controller:
-    controller.authenticate(getAuth.hash())  #access tor hash password from config.ini
-    bytes_read = str((float(controller.get_info("traffic/read"))/1000000000)) + "GB" #Format to GB for readability
-    bytes_written = str(float(controller.get_info("traffic/written")/1000000000)) + "GB"
-    print("My Tor relay has read %s bytes and written %s." % (bytes_read, bytes_written))
-    #flexibility to return both up and down values from the same func
-    #param is hardcoded in the main so this is stable
-    if updown == 'up':
-      return bytes_written
-    if updown == 'down':
-      return bytes_read
+#Traffic report
+class Traffic:
+  def __init__(self):
+    # get traffic through the inbuilt api via the "control port" 9051
+    with Controller.from_port(port=9051) as controller:
+      # access tor hash password from config.ini
+      controller.authenticate(getAuth.hash())
+      self.bytes_read = float(controller.get_info("traffic/read") / 1000000000)
+      self.bytes_written = float(controller.get_info("traffic/written") / 1000000000)
+      #timestamp for sorting and logging in SQL
+      self.timeStamp = "%s/%s/%s" % (datetime.today().month, datetime.today().day, datetime.today().year)
+
+
+  def get(self, updown):
+      if updown == 'up':
+        return self.bytes_written
+      if updown == 'down':
+        return self.bytes_read
