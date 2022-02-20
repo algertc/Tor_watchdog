@@ -1,4 +1,4 @@
 import logger
 import cfg
-
-logger.startup_test(cfg.get()['SMTP_OUTPUT']['receivingAddr'])
+import configparser
+logger.startup_test(str(cfg.get()['SMTP_OUTPUT']['receivingAddr']))
