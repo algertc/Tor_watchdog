@@ -8,6 +8,7 @@ def notif(func):
 def handler(config, up, down, timeStamp):
     import mailer
     import logger
+    #sent to mysql
     logger.log(timeStamp, up, down)
     #sent to mailer
     tmp = timeStamp
