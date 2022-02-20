@@ -12,6 +12,5 @@ def post(time, up, down):
         passwd=(base64.b64decode(str(config['MYSQL']['passwd']).encode('ascii')).decode('ascii'))
         )
     cursor = db.cursor() #pointer in db
-    cursor.execute("USE tor_logging") #tor_logging - db name
-
-    cursor.execute("INSERT INTO log(%s,%s,%s)" % (time, up, down))
+    cursor.execute("USE tor_logging;") #tor_logging - db name
+    cursor.execute("INSERT INTO log (timestamp, bytesUP, bytesDOWN) VALUES (%s,%s,%s);" % (time, up, down))
