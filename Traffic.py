@@ -1,7 +1,21 @@
 from stem.control import Controller
 import getAuth
 from datetime import datetime
-from logger import interface
+
+def interface(func):
+
+  #write the sql fucntions within this class then just use a class wrapper on some call of traffic
+  def wrapper(self):
+    #run func first. (so object can be created), THEN, post to sql
+    import logger
+    traffic = func(self)
+    up = traffic.get("up")
+    down = traffic.get("down")
+    timestamp = traffic.get("timeStamp")
+    logger.log(timestamp, up, down)
+    return traffic
+    #sql_post(returnVal)
+  return wrapper
 
 #Traffic report
 class Traffic():

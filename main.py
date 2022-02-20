@@ -14,7 +14,7 @@ logger.startup_test(config)
 while True:
   if str(datetime.now().strftime("%H:%M")) == "00:00":
     #Generate traffic report object and log it remotely with mysql
-    traffic = logger.generate_report()
+    traffic = Traffic()
     #Send A plaintext
     mailer.sendMail(config, traffic.get('down'), traffic.get('up'))
     time.sleep(62)
