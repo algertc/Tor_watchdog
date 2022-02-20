@@ -1,9 +1,12 @@
 import SQL_LOG
 import mailer
-from Traffic import Traffic
+import Traffic
 def log(timestamp, up, down):
     SQL_LOG.post(timestamp, up, down)
 
 def startup_test(receivingAddr):
-    traffic = Traffic()
-    mailer.sendMail(receivingAddr, traffic.get('down'), traffic.get('up'))
+    traffic = Traffic.Traffic()
+    down = traffic.get('down')
+    up = traffic.get('up')
+    print(down)
+    mailer.sendMail(receivingAddr, str(down), str(up))
