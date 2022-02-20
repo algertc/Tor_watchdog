@@ -13,5 +13,6 @@ def post(time, up, down):
         )
     cursor = db.cursor() #pointer in db
     cursor.execute("USE tor_logging;") #tor_logging - db name
-    cursor.execute("INSERT INTO log (timestamp, bytesUP, bytesDOWN) VALUES (%s,%s,%s);" % (time, round(up, 3), round(down, 3)))
+    #truncate float for sql limit
+    cursor.execute("INSERT INTO log (timestamp, bytesUP, bytesDOWN) VALUES (%s,%s,%s);" % (time, str(round(int(up), 3)), str(round(int(down, 3)))))
     db.commit()
