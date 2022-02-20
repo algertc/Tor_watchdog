@@ -1,11 +1,11 @@
 from stem.control import Controller
 import getAuth
 from datetime import datetime
-import logger
+from logger import interface
 
 #Traffic report
 class Traffic():
-  @logger.interface
+  @interface
   def __init__(self):
     # get traffic through the inbuilt api via the "control port" 9051
     with Controller.from_port(port=9051) as controller:
