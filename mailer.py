@@ -32,7 +32,7 @@ def sendMail(recievingAddr, up, down):
     print("sending mail")
     print(str(up))
     #email to which the report will be sent
-    address = recievingAddr['SMTP_OUTPUT']['receivingAddr']
+    address = recievingAddr
     #conenct to smtp
     server = smtplib.SMTP_SSL('smtp.hostinger.com', 465)
     #access auth data from config.ini

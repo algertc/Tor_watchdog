@@ -19,7 +19,7 @@ while True:
     down = traffic.get('down')
     up = traffic.get('up')
     timeStamp = traffic.get('timeStamp')
-    Report.handler(config, up, down, timeStamp)
+    Report.handler(config['SMTP_OUTPUT']['receivingAddr'], up, down, timeStamp)
     time.sleep(62)
 
 

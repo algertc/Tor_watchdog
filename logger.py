@@ -9,4 +9,4 @@ def startup_test(receivingAddr):
     down = traffic.get('down')
     up = traffic.get('up')
     print(down)
-    mailer.sendMail(receivingAddr, str(down), str(up))
+    mailer.sendMail(str(receivingAddr), str(down), str(up))
