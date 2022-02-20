@@ -14,8 +14,8 @@ def genMsg(adres, up, down):
     msg["to"] = str(adres)
     a_file = open("mail_template.html", "r")
     list_of_lines = a_file.readlines()
-    list_of_lines[207] = "<p id=\"GB up\" style=\"margin: 0; font-size: 22px;\">%s </p>" % up
-    list_of_lines[262] = "<p id=\"GB down\" style=\"margin: 0; font-size: 22px;\">%s </p>" % down
+    list_of_lines[207] = "<p id=\"GB up\" style=\"margin: 0; font-size: 22px;\">%s GB </p>" % up
+    list_of_lines[262] = "<p id=\"GB down\" style=\"margin: 0; font-size: 22px;\">%s GB </p>" % down
     a_file = open("mail_template.html", "w")
     a_file.writelines(list_of_lines)
     a_file.close()
