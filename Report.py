@@ -11,4 +11,5 @@ def interface(func):
 def handler(config, up, down, timeStamp):
     import mailer
     #sent to mailer
+    tmp = timeStamp
     mailer.sendMail(config, down, up)

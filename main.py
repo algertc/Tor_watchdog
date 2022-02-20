@@ -29,6 +29,7 @@ def main():
 def init():
   print("starting")
   logger.startup_test(config['SMTP_OUTPUT']['receivingAddr'])
+  time.sleep(5)
   print("check passed, running main")
   main()
 
