@@ -32,3 +32,4 @@ def init():
   print("check passed, running main")
   main()
 
+init()
