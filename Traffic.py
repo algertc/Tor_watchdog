@@ -14,7 +14,7 @@ class Traffic():
       self.bytes_written = float(controller.get_info("traffic/written")) / 1000000000
       #timestamp for sorting and logging in SQL
       self.timeStamp = str(time.strftime("%H:%M %m/%d/%Y"))
-
+      print(self.timeStamp)
   def get(self, data):
       if data == 'up':
         return self.bytes_written
