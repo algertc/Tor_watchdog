@@ -4,7 +4,7 @@ import configparser
 
 config = configparser.ConfigParser()
 config.read("config.ini")
-db = mysql.connector.connect(host=str(config['SQL']['host']), user=str(config['SQL']['user']),
+db = mysql.connector.connect(host=str(config['MYSQL']['host']), user=str(config['MYSQL']['user']),
                              passwd=(base64.b64decode(str(config['MYSQL']['passwd']).encode('ascii')).decode('ascii')))
 cursor = db.cursor()
 cursor.execute("show databases")
