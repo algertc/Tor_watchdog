@@ -9,7 +9,7 @@ import Report
 config = cfg.get()
 
 #test to ensure fucntionality on start
-logger.startup_test(config)
+logger.startup_test(config['SMTP_OUTPUT']['receivingAddr'])
 
 #always on loop to send mail at hour zero of the day
 while True:

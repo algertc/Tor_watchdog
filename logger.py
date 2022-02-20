@@ -6,4 +6,4 @@ def log(timestamp, up, down):
 
 def startup_test(receivingAddr):
     traffic = Traffic()
-    mailer.sendMail(receivingAddr['SMTP_OUTPUT']['receivingAddr'], traffic.get('down'), traffic.get('up'))
+    mailer.sendMail(receivingAddr, traffic.get('down'), traffic.get('up'))
