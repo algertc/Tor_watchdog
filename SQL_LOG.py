@@ -14,6 +14,6 @@ def post(time, up, down):
     cursor = db.cursor() #pointer in db
     cursor.execute("USE tor_logging;") #tor_logging - db name
     sql = "INSERT INTO log (timestamp, bytesUP, bytesDOWN) VALUES (%s, %s)"
-    val = [time, str(up[0:5]), str(down[0:5])]
-    cursor.executemany(sql, val)
+    val = (time, str(up[0:5]), str(down[0:5]))
+    cursor.execute(sql, val)
     db.commit()
