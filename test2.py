@@ -1,7 +1,4 @@
-from Traffic import Traffic
 import logger
+import cfg
 
-traffic = Traffic()
-
-logger.log(traffic)
-
+logger.startup_test(cfg.get())

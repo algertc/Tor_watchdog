@@ -21,4 +21,5 @@ def generate_report():
     return Traffic()
 
 def startup_test(receivingAddr):
-    mailer.sendMail(receivingAddr['SMTP_OUTPUT']['receivingAddr'], generate_report().get('down'), generate_report().get('up'))
+    traffic = generate_report()
+    mailer.sendMail(receivingAddr['SMTP_OUTPUT']['receivingAddr'], traffic.get('down'), traffic.get('up'))

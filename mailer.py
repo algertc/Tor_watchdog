@@ -1,6 +1,5 @@
 import smtplib
 import configparser
-from bs4 import BeautifulSoup as bs
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 #open and read config for smtp auth and destination
