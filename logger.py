@@ -1,5 +1,4 @@
 import SQL_LOG
-from Traffic import Traffic
 import mailer
 def log(object):
     up = object.get("up")
@@ -18,6 +17,7 @@ def interface(func):
   return wrapper
 
 def generate_report():
+    from Traffic import Traffic
     return Traffic()
 
 def startup_test(receivingAddr):
