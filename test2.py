@@ -1,4 +1,5 @@
 import logger
-import cfg
 import configparser
-logger.startup_test(str(cfg.get()['SMTP_OUTPUT']['receivingAddr']))
+config = configparser.ConfigParser()
+out = config.read("config.ini")
+logger.startup_test(str(config['SMTP_OUTPUT']['receivingAddr']))
