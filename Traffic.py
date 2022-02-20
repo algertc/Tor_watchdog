@@ -3,17 +3,16 @@ import getAuth
 from datetime import datetime
 
 def interface(func):
-
   #write the sql fucntions within this class then just use a class wrapper on some call of traffic
-  def wrapper(self):
+  def wrapper(*args, **kwargs):
     #run func first. (so object can be created), THEN, post to sql
     import logger
-    traffic = func(self)
+    traffic = func(*args, **kwargs)
     up = traffic.get("up")
     down = traffic.get("down")
     timestamp = traffic.get("timeStamp")
     logger.log(timestamp, up, down)
-    return traffic
+    return traffic#possibly not needed?
     #sql_post(returnVal)
   return wrapper
 
