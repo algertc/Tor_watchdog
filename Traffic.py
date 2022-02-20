@@ -13,7 +13,7 @@ class Traffic():
       self.bytes_read = float(controller.get_info("traffic/read")) / 1000000000
       self.bytes_written = float(controller.get_info("traffic/written")) / 1000000000
       #timestamp for sorting and logging in SQL
-      self.timeStamp = time.strftime("%H:%M %m/%d/%Y")
+      self.timeStamp = str(time.strftime("%H:%M %m/%d/%Y"))
 
   def get(self, data):
       if data == 'up':
