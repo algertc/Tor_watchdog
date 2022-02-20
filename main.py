@@ -1,25 +1,22 @@
 from datetime import datetime
-import configparser
+from Traffic import Traffic
+import cfg
+import logger
 import mailer
 import time
-import Traffic
-#create config object
-#todo make a config class/file with the getAuth.py stuff and use that instead of accessing from main
-config = configparser.ConfigParser()
-#declaring the file from which config should retrieve its data
-config.read("config.ini")
 
-#use a decorator with the constructor to
+config = cfg.get()
 
 #test to ensure fucntionality on start
-testTraf = Traffic.Traffic()
-mailer.sendMail(config['SMTP_OUTPUT']['receivingAddr'], testTraf.get('down'), testTraf.get('up'))
+logger.startup_test(config)
 
 #always on loop to send mail at hour zero of the day
 while True:
   if str(datetime.now().strftime("%H:%M")) == "00:00":
-    traffic = Traffic.Traffic()
-    mailer.sendMail(config['SMTP_OUTPUT']['receivingAddr'], traffic.get('down'), traffic.get('up'))
+    #Generate traffic report object and log it remotely with mysql
+    traffic = logger.generate_report()
+    #Send A plaintext
+    mailer.sendMail(config, traffic.get('down'), traffic.get('up'))
     time.sleep(62)
 
 

@@ -1,29 +1,11 @@
 from stem.control import Controller
 import getAuth
 from datetime import datetime
-import configparser
-import base64
-config = configparser.ConfigParser()
-config.read("config.ini")
-
-import mysql.connector
-db = mysql.connector.connect(host=str(config['SQL']['host']), user=str(config['SQL']['user']), passwd = (base64.b64decode(str(config['SQL']['passwd']).encode('ascii')).decode('ascii')))
-db.cursor()
-
-class Log(object):
-  #write the sql fucntions within this class then just use a class wrapper on some call of traffic
-  def __call__(self, func):
-    def wrapper(self):
-      #run func first. (so object can be created), THEN, post to sql
-      traffic = self()
-      print(traffic.get('up'))
-      #sql_post(returnVal)
-      return traffic
-    return wrapper
+import logger
 
 #Traffic report
-class Traffic:
-  @Log
+class Traffic():
+  @logger.interface
   def __init__(self):
     # get traffic through the inbuilt api via the "control port" 9051
     with Controller.from_port(port=9051) as controller:
@@ -35,8 +17,10 @@ class Traffic:
       self.timeStamp = "%s/%s/%s" % (datetime.today().month, datetime.today().day, datetime.today().year)
 
 
-  def get(self, updown):
-      if updown == 'up':
+  def get(self, data):
+      if data == 'up':
         return self.bytes_written
-      if updown == 'down':
+      if data == 'down':
         return self.bytes_read
+      if data == 'timeStamp':
+        return self.timeStamp
