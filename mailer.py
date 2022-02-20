@@ -18,9 +18,12 @@ def genMsg(adres, up, down):
     list_of_lines[257] = "<p id=\"GB down\" style=\"margin: 0; font-size: 22px;\">%s </p>" % down
     a_file = open("mail_template.html", "w")
     a_file.writelines(list_of_lines)
-    html = MIMEText(a_file.read(), "html")
-    msg.attach(html)
     a_file.close()
+    post_edit = open("mail_template.html", "r")
+    htmlText = post_edit.read()
+    html = MIMEText(htmlText, "html")
+    msg.attach(html)
+
     return msg
     #msg = "To: User <" + str(adres) +">\nFrom: Admin <admin@charliealgert.com>\nSubject: TOR Relay Traffic Report\nBytes UP: " + str(up) + "\nBytes DOWN: " + str(down)
     #return msg
