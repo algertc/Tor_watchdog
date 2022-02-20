@@ -19,7 +19,7 @@ def sendMail(recievingAddr, up, down):
     #conenct to smtp
     server = smtplib.SMTP_SSL('smtp.hostinger.com', 465)
     #access auth data from config.ini
-    server.login(str(config['AUTH']['smtpUser']), str(config['AUTH']['smtpPass']))
+    server.login(str(config['SMTP_AUTH']['smtpUser']), str(config['SMTP_AUTH']['smtpPass']))
     server.sendmail(
       "admin@charliealgert.com",
       address,

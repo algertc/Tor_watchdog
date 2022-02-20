@@ -13,13 +13,13 @@ config.read("config.ini")
 
 #test to ensure fucntionality on start
 testTraf = Traffic.Traffic()
-mailer.sendMail(config['OUTPUT']['receivingAddr'], testTraf.get('down'), testTraf.get('up'))
+mailer.sendMail(config['SMTP_OUTPUT']['receivingAddr'], testTraf.get('down'), testTraf.get('up'))
 
 #always on loop to send mail at hour zero of the day
 while True:
   if str(datetime.now().strftime("%H:%M")) == "00:00":
     traffic = Traffic.Traffic()
-    mailer.sendMail(config['OUTPUT']['receivingAddr'], traffic.get('down'), traffic.get('up'))
+    mailer.sendMail(config['SMTP_OUTPUT']['receivingAddr'], traffic.get('down'), traffic.get('up'))
     time.sleep(62)
 
 
