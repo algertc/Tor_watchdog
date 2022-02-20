@@ -4,6 +4,7 @@ import cfg
 import logger
 import mailer
 import time
+import Report
 
 config = cfg.get()
 
@@ -15,8 +16,10 @@ while True:
   if str(datetime.now().strftime("%H:%M")) == "00:00":
     #Generate traffic report object and log it remotely with mysql
     traffic = Traffic()
-    #Send A plaintext
-    mailer.sendMail(config, traffic.get('down'), traffic.get('up'))
+    down = traffic.get('down')
+    up = traffic.get('up')
+    timeStamp = traffic.get('timeStamp')
+    Report.handler(config, up, down, timeStamp)
     time.sleep(62)
 
 
