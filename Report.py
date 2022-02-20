@@ -1,15 +1,14 @@
-import mailer
-
+#mysql decorator
 def interface(func):
-  # write the sql fucntions within this class then just use a class wrapper on some call of traffic
   def wrapper(config, up, down, timeStamp):
-    # run func first. (so object can be created), THEN, post to sql
+    #log to mysql DB with HH:MM:SS - MM/DD/YYYY - UP - DOWN
     import logger
     logger.log(timeStamp, up, down)
     tmp = config
-    # sql_post(returnVal)
   return wrapper
 
 @interface
 def handler(config, up, down, timeStamp):
+    import mailer
+    #sent to mailer
     mailer.sendMail(config, down, up)

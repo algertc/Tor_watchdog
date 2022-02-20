@@ -4,11 +4,11 @@ setup(
     name='TOR_Traffic_reporter',
     version='0.1.0',
     author='Charlie Algert',
-    author_email='algertc@gmail.com',
+    author_email='algertc*at*gmail*dot*com',
     packages=['TOR_TR'],
     url='https://github.com/algertc/TOR_Traffic_Reporter',
     license='LICENSE.txt',
-    description='TOR Relay traffic monitoring and reporting',
+    description='TOR Relay traffic monitoring, logging, and reporting',
     long_description=open('../README.txt').read(),
     install_requires=[
         "bidict >= 0.21.4",
@@ -24,5 +24,6 @@ setup(
         "stem == 1.8.0",
         "urllib3 == 1.26.8",
         "wheel == 0.36.2",
+        "mysql-connector == 2.2.0",
     ],
 )
