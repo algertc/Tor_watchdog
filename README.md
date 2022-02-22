@@ -12,7 +12,7 @@
 
 <center> - Nightly Email Traffic Reports</center>
 <center>  - mySQL Traffic Logging </center>
-<center> - Utime and Connections to be Implemented Soon</center>
+<center> - Uptime and Connections to be Implemented Soon</center>
 
 </p>
 <br/>
