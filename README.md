@@ -1,3 +1,4 @@
+
 <div id="top"></div>
 
 <!-- PROJECT LOGO -->
@@ -59,9 +60,12 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-A utility made to monitor your tor relay through the inbuilt api. Has SQL logging capabilities and sends nightly HTML fancy email reports updating you on the status of your relay. Fully configurable for local or remote sql and smtp
-
+   <a href="https://charliealgert.com/">
+    <img src="https://charliealgert.com/email_showcase.png" alt="Logo" width="" height="">
+  </a> <br/>
+<h3 style="color: #7D4698;">
+<strong>A utility made to monitor your tor relay through the inbuilt api. Has SQL logging capabilities and sends nightly HTML fancy email reports updating you on the status of your relay. Fully configurable for local or remote sql and smtp</strong>
+</h3>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
