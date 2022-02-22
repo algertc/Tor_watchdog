@@ -17,11 +17,11 @@
 </p>
 <br/>
     <center>
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://https://github.com/algertc/Tor_watchdog">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://https://github.com/algertc/Tor_watchdog/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://https://github.com/algertc/Tor_watchdog/issues">Request Feature</a>
     </center>
     <hr/>
   </p>
