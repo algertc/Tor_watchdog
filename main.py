@@ -10,6 +10,8 @@ config = configparser.ConfigParser()
 #create configparser array from "config.ini"
 config.read("config.ini")
 
+from Cfg import Cfg
+config = Cfg()
 def main():
   # always on loop to send mail at hour zero of the day
   while True:
@@ -28,7 +30,7 @@ def main():
 #test to ensure fucntionality on start
 def init():
   print("starting")
-  logger.startup_test(config['SMTP_OUTPUT']['receivingAddr'])
+  logger.startup_test(config.SMTP_OUTPUT_receivingAddr)
   time.sleep(5)
   print("check passed, running main")
   main()
