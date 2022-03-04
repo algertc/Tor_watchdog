@@ -3,8 +3,8 @@ import Traffic
 import Report
 
 #send to sql handler for post
-def log(timestamp, up, down):
-    SQL_LOG.post(timestamp, up, down)
+def log(config, timestamp, up, down):
+    SQL_LOG.post(config, timestamp, up, down)
 
 
 #ensure functionality on start

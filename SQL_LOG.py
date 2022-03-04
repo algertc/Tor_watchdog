@@ -1,15 +1,12 @@
 import mysql.connector
 import base64
-import configparser
-config = configparser.ConfigParser()
-config.read("config.ini")
 
 #post entry to mysql
-def post(time, up, down):
+def post(config, time, up, down):
     db = mysql.connector.connect(
-        host=str(config['MYSQL']['host']),
-        user=str(config['MYSQL']['user']),
-        passwd=(base64.b64decode(str(config['MYSQL']['passwd']).encode('ascii')).decode('ascii'))
+        host=str(config.MYSQL_host),
+        user=str(config.MYSQL_user),
+        passwd=(base64.b64decode(str(config.MYSQL_passwd).encode('ascii')).decode('ascii'))
         )
     cursor = db.cursor() #pointer in db
     cursor.execute("USE tor_logging;") #tor_logging - db name

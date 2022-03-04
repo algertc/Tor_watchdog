@@ -9,7 +9,7 @@ def handler(config, up, down, timeStamp):
     import mailer
     import logger
     #sent to mysql
-    logger.log(timeStamp, up, down)
+    logger.log(config, timeStamp, up, down)
     #sent to mailer
     tmp = timeStamp
-    mailer.sendMail(config, down, up)
+    mailer.sendMail(config.SMTP_OUTPUT_receivingAddr, down, up)

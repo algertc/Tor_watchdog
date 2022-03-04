@@ -3,15 +3,11 @@ from Traffic import Traffic
 import logger
 import time
 import Report
-import configparser
-
-#parse the config
-config = configparser.ConfigParser()
-#create configparser array from "config.ini"
-config.read("config.ini")
-
 from Cfg import Cfg
-config = Cfg()
+
+#parse the config object from config.ini
+config = Cfg("config.ini")
+
 def main():
   # always on loop to send mail at hour zero of the day
   while True:
@@ -19,11 +15,11 @@ def main():
       #Generate traffic report object and log it remotely with mysql
       traffic = Traffic()
       #store instance data
-      down = traffic.get('down')
-      up = traffic.get('up')
-      timeStamp = traffic.get('timeStamp')
+      down = traffic.get("down")
+      up = traffic.get("up")
+      timeStamp = traffic.get("timestamp")
       #pass the destination and data to the handler
-      Report.handler(config['SMTP_OUTPUT']['receivingAddr'], up, down, timeStamp)
+      Report.handler(config, up, down, timeStamp)
       #62 to prevent double run
       time.sleep(62)
 
