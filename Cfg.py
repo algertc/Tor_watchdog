@@ -11,9 +11,17 @@ class Cfg:
                 #use exec fucntion to dynamically create instance data attributes and names depending on config content
                 exec("self.{} = '{}'".format(("%s_%s" % (i,j)), str(config[i][j])))
 
-                #benefits
-                #todo if you can explain the benefit of having it as instance data of a config
-                #todo   object instead of a list. This is valid.
-                #no need to import and read each time
-                #same time compelxity but will run faster withiuot the need to query a hashmap
-                #big O noation time complexity
+              
+                """
+                  #######  #Why convert to a separate object?   #######
+                  
+                1) Negates the need to import the parser and create separate dictioanry config objects in each file
+               
+                2) The parser returns a dictioanry created from the content in "config.ini"
+                    -Speed improvement 
+                    - In python, dictionaries make use of a hash table. (The fastest inbuilt data structure)
+                    - Take advantage of the capabilities of the hashmap by querying it only once and create lightweight object from its content (cfg), 
+                        - Result: Config references now access instance data rather the array, making a speed improvement, albeit marginal (both at O(1))
+               
+                3) increased readability, shorter lines, and simplified naming conventions
+                """
