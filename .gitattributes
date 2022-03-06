@@ -1,2 +1,3 @@
 *.html linguist-detectable=false
 *.ini linguist-detectable=true
+*.ini linguist-language=INI
