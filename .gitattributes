@@ -1,4 +1,4 @@
-*.html linguist-detectable=false
+#*.html linguist-detectable=false
 *.ini linguist-detectable=true
 *.ini linguist-language=INI
 mail_template.html -linguist-vendored
